@@ -12,7 +12,6 @@ class SeamstressSerializer(serializers.ModelSerializer):
 
     def get_machine_name(self, obj):
         serializer = SewingMachinesSerializer([obj], many=True)
-        print(serializer.data)
         return serializer.data
 
 

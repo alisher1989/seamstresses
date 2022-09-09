@@ -22,5 +22,5 @@ from webapp.views import ListView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', ListView.as_view(), name='index'),
-    path('api_view/', SeamstressViewSet.as_view({'get': 'list'})),
+    path('api_view/', SeamstressViewSet.as_view({'get': 'list'}), name='api_view'),
 ]
