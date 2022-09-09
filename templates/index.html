@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Seamstress</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom: 1%">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}">Seamstress</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown"
+                aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav">
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        {% for i in page.object_list %}
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ i.name }} {{ i.surname }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Швейная машина: <b
+                                style="color: black">{{ i.sewing_machines }}</b></h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Количество товаров: <b
+                                style="color: black">{{ i.total }}</b></h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Цена за каждый продукт: <b
+                                style="color: black">{{ i.price_per_product }}</b></h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Стоимость работы: <b
+                                style="color: black">{{ i.total_price }}</b></h6>
+
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div style="margin-top: 3%">
+        <nav aria-label="...">
+            <ul class="pagination">
+                {% if page.has_previous %}
+                    <li>
+                    <li class="page-item"><a class="page-link"
+                                             href="{% url 'index' %}?page={{ page.previous_page_number }}">Previous</a>
+                    </li>
+
+                    </li>
+                {% endif %}
+                {% if page.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="{% url 'index' %}?page={{ page.next_page_number }}">Next</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+        crossorigin="anonymous"></script>
+</body>
+</html>
