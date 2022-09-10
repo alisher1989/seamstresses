@@ -11,7 +11,7 @@ class SeamstressSerializer(serializers.ModelSerializer):
         fields = ['name', 'surname', 'sewing_machines', 'machine_name', 'total', 'price_per_product', 'total_price']
 
     def get_machine_name(self, obj):
-        serializer = SewingMachinesSerializer([obj], many=True)
+        serializer = SewingMachinesSerializer([obj.sewing_machines], many=True)
         return serializer.data
 
 
